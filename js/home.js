@@ -1,39 +1,52 @@
 // reuseable code
-function eventHandaler(e) {
+function eventHandler(e) {
   return parseInt(document.getElementById(e).innerText);
 }
 
-// Heart Section
+// Heart icon Section
 const heart = document.getElementsByClassName('heart');
-
 for (const hrt of heart) {
-  hrt.addEventListener('click', function () {
-    let Num = eventHandaler('heartNum');
-    Num++;
+  hrt.addEventListener('change', function () {
+    let Num = eventHandler('heartNum');
+    if (hrt.checked) {
+      Num++;
+    } else {
+      Num--;
+    }
     document.getElementById('heartNum').innerText = Num;
   });
 }
 
-const copy = document.getElementsByClassName('copy');
-
-for (const cpy of copy) {
-  console.log(cpy)
-  cpy.addEventListener('click', function () {
-    let Num = eventHandaler('copyNum');
+//copy paste section reuseable code
+function copyBtn(id1, id2) {
+  document.getElementById(id1).addEventListener('click', function () {
+    const CopyNum = document.getElementById(id2);
+    let Num = eventHandler('copyNum');
     Num++;
     document.getElementById('copyNum').innerText = Num;
+    alert(` আপনি যে নাম্বারটি কপি করেছেন তা হচ্ছে :  ${CopyNum.innerText}
+ `);
+    navigator.clipboard.writeText(CopyNum.innerText);
   });
 }
-
-
+// add argument copy paste parameter
+copyBtn('copy1', 'n1');
+copyBtn('copy2', 'n2');
+copyBtn('copy3', 'n3');
+copyBtn('copy4', 'n4');
+copyBtn('copy5', 'n5');
+copyBtn('copy6', 'n6');
+copyBtn('copy7', 'n7');
+copyBtn('copy8', 'n8');
+copyBtn('copy9', 'n9');
 
 // call function
 
-function evnetCall(id1, id2, id3) {
+function eventCall(id1, id2, id3) {
   const callBtn = document.getElementById(id1);
 
   callBtn.addEventListener('click', function () {
-    let coinNum = eventHandaler('coinNum');
+    let coinNum = eventHandler('coinNum');
 
     if (coinNum < 20) {
       alert(' আপনার কাছে পর্যাপ্ত পরিমাণ কয়েন নেই...');
@@ -77,12 +90,12 @@ document.getElementById('clear').addEventListener('click', function () {
   }
 });
 
-evnetCall('callBtn1', 't1', 'n1');
-evnetCall('callBtn2', 't2', 'n2');
-evnetCall('callBtn3', 't3', 'n3');
-evnetCall('callBtn4', 't4', 'n4');
-evnetCall('callBtn5', 't5', 'n5');
-evnetCall('callBtn6', 't6', 'n6');
-evnetCall('callBtn7', 't7', 'n7');
-evnetCall('callBtn8', 't8', 'n8');
-evnetCall('callBtn9', 't9', 'n9');
+eventCall('callBtn1', 't1', 'n1');
+eventCall('callBtn2', 't2', 'n2');
+eventCall('callBtn3', 't3', 'n3');
+eventCall('callBtn4', 't4', 'n4');
+eventCall('callBtn5', 't5', 'n5');
+eventCall('callBtn6', 't6', 'n6');
+eventCall('callBtn7', 't7', 'n7');
+eventCall('callBtn8', 't8', 'n8');
+eventCall('callBtn9', 't9', 'n9');
